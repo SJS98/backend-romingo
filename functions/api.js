@@ -24,25 +24,25 @@ class Vehicle {
         if (this.comfirtLevel == "GENERAL") {
             if (this.type == "TRAIN")
                 price = this.dist * 1;
-            if (this.type == "BUS")
+            else if (this.type == "BUS")
                 price = this.dist * 1.5;
-            if (this.type == "PLANE")
+            else if (this.type == "PLANE")
                 price = this.dist * 10;
         }
         else if (this.comfirtLevel == "PROFESSIONAL") {
             if (this.type == "TRAIN")
                 price = this.dist * 4;
-            if (this.type == "BUS")
+            else if (this.type == "BUS")
                 price = this.dist * 5;
-            if (this.type == "PLANE")
+            else if (this.type == "PLANE")
                 price = this.dist * 15;
         }
         else if (this.comfirtLevel == "EXECUTIVE") {
             if (this.type == "TRAIN")
                 price = this.dist * 8;
-            if (this.type == "BUS")
+            else if (this.type == "BUS")
                 price = this.dist * 10;
-            if (this.type == "PLANE")
+            else if (this.type == "PLANE")
                 price = this.dist * 20;
         }
         return price;
@@ -58,11 +58,12 @@ let vehicles = [
 
 const express = require("express");
 const serverless = require("serverless-http");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 
 const router = express.Router();
-
 
 router.get("/", (req, res) => {
     res.json({
